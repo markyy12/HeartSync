@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | Find Your Match</title>
+    <link rel="stylesheet" href="profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="lockScreen">
+      <h1>🔒 Dating Site</h1>
+      <p class="text">Enter password to unlock</p>
+      <input type="password" id="passwordInput" placeholder="Password" />
+      <button onclick="unlock()">Unlock</button>
+      <p id="errorMsg"></p>
+    </div>
+
+
+
+    <div class="app-container">
+      <!-- header -->
+      <div class="header">
+        <div class="logo"><i class="fas fa-sparkles"></i> HeartSync</div>
+        <div class="nav-icons">
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Go Back</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- main profile card (featured) -->
+      <div class="profile-card" id="featuredProfile">
+        <div class="profile-avatar">
+          <img src="./images/markyy.jpg" alt="Markyy" id="profileImg" />
+          <span class="status-dot"></span>
+        </div>
+        <div class="profile-info">
+          <h2 id="profileName">Markyy, 23</h2>
+          <div class="tagline">
+            <span>📍 Offa</span>
+            <span> Watching Football + Watching Movies</span>
+          </div>
+          <p id="profileBio">
+            "Love isn't finfing someone you can live with. It's finding someone
+            you can't live without."
+          </p>
+          <div class="profile-actions">
+            <a
+              href="https://wa.me/+2348068736505?text=Hi!%20I%20liked%20you%20on%20HeartSync%20"
+            >
+              <button class="btn btn-primary" id="likeBtn">
+                <i class="fas fa-heart"></i> Like
+              </button>
+            </a>
+
+            <a href="https://wa.me/+2348068736505">
+              <button class="btn btn-outline" id="messageBtn">
+                <i class="fas fa-comment"></i> Message
+              </button>
+            </a>
+
+            <button class="btn btn-like" id="nextProfileBtn">
+              <i class="fas fa-arrow-right"></i> Next
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- search & filters -->
+      <div class="search-section">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            placeholder="Search by name or town..."
+            id="searchInput"
+          />
+          <button id="searchBtn"><i class="fas fa-filter"></i> Search</button>
+        </div>
+        <div class="filter-options">
+          <select id="ageFilter">
+            <option value="all">Any age</option>
+            <option value="18-21">18–21</option>
+            <option value="21-25">21–25</option>
+            <option value="25+">25+</option>
+          </select>
+          <select id="cityFilter">
+            <option value="all">All cities</option>
+            <option value="offa">Offa</option>
+            <option value="ilorin">Ilorin</option>
+            <option value="ijagbo">Ijagbo</option>
+            <option value="ipee">Ipee</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- people grid -->
+      <h3 style="font-weight: 500; color: #2c2c2c; margin-bottom: 0.5rem">
+        <i class="fas fa-users" style="color: #ff4b5c"></i> around you
+      </h3>
+      <div class="cards-grid" id="peopleGrid">
+        <!-- cards will be injected via JS -->
+      </div>
+
+      <div class="footer-note">
+        <i class="fas fa-heart"></i> made with love · fully functional dating
+        experience
+      </div>
+    </div>
+    <script src="profile.js"></script>
+  </body>
+</html>
