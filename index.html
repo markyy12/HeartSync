@@ -40,7 +40,7 @@
         </div>
 
         <div class="img">
-          <img src=".//images/couple.png" alt="" loading="lazy" />
+          <img src=".//images/couple.png" alt="" loading="lazy" id="img" />
         </div>
       </div>
     </header>
@@ -185,10 +185,6 @@
       <div class="img-container"></div>
     </section>
 
-    <a href="#top" class="top-widget" title="Back to top"
-      ><i class="fa-solid fa-arrow-up"></i
-    ></a>
-
     <section class="faq-section">
       <div class="container">
         <div class="pink-line"></div>
@@ -293,67 +289,38 @@
             class="cta-form"
             method="post"
             action="https://formspree.io/f/mqeovlbd"
-            enctype="multipart/form-data"
+            id="my-form"
           >
+            <label for="name"></label>
             <input
               type="text"
-              class="form-control w-85"
-              id="inputname4"
               name="name"
-              placeholder="Enter your full name"
-              required
-            />
-            <input
-              type="tel"
-              class="form-control w-85"
-              id="inputname4"
-              name="number"
-              placeholder="Enter your full name"
-              required
-            />
-             <input
-                type="file"
-                class="form-control w-85"
-                id="inputname4"
-                name="photo"
-                placeholder="Enter your full name"
-                required
-              />
-            <button type="submit" class="btn" id="continueToPaymentBtn">
-              Continue to Payment <i class="bi bi-arrow-right"></i>
-            </button>
-            <!-- <input
-              type="text"
+              id="name"
+              placeholder="Enter your name"
               class="form-input"
-              placeholder="Your name*"
-              required
-              name="name"
             />
+            <label for="email"></label>
             <input
               type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your Email"
               class="form-input"
-              placeholder="Your email*"
-              required
-              name="Phone number"
             />
-            <div class="upload">
-              <div class="upload-label">
-                <i class="fa-solid fa-camera"></i>
-                <span id="uploadLabel">Upload your photo</span>
-              </div>
-              <input
-                type="file"
-                name="photo"
-                id="photoInput"
-                class="hidden-file-input"
-                accept="image/*"
-                required
-              />
-            </div>
-            <span class="file-name" id="file-preview"></span>
+            <label for="tel"></label>
+            <input
+              type="tel"
+              name="number"
+              id="number"
+              placeholder="Enter your Number"
+              class="form-input"
+            />
 
-            <button type="submit" class="submit-btn">Send a request</button> -->
+            <button type="submit" id="Btn" class="submit-btn">
+              Send a request
+            </button>
           </form>
+          <span id="msg"></span>
         </div>
       </div>
       <div class="image-container"></div>
@@ -377,9 +344,9 @@
       </div>
     </section>
 
-    <a href="#top" class="top-widget" title="Back to top"
-      ><i class="fa-solid fa-arrow-up"></i
-    ></a>
+    <div id="chatWidget" class="chat-widget" title="Scroll to bottom">
+      <i id="widgetIcon" class="fa-solid fa-arrow-down"></i>
+    </div>
 
     <footer>
       <div class="container">
@@ -388,14 +355,33 @@
         </div>
         <p>We find true love for single people in a big state.</p>
         <div class="social-icons">
-          <a href=""><i class="fa-solid fa-facebook"></i></a>
-          <a href=""><i class="fa-solid fa-whatsapp"></i></a>
-          <a href=""><i class="fa-solid fa-twitter"></i></a>
+          <a href="#"><i class="fa-solid fa-facebook"></i></a>
+          <a href="https://wa.me/+2348068736505"><i class="fa-solid fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-solid fa-twitter"></i></a>
         </div>
       </div>
     </footer>
 
     <script>
+     const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("nav-menu");
+
+      hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        const icon = hamburger.querySelector("i");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-xmark");
+      });
+
+      navMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          const icon = hamburger.querySelector("i");
+          icon.classList.add("fa-bars");
+          icon.classList.remove("fa-xmark");
+        });
+      });
+
       let form = document.getElementById("my-form");
 
       async function handleSubmit(event) {
@@ -411,7 +397,8 @@
         })
           .then((response) => {
             if (response.ok) {
-              message.innerHTML = "Thanks for your submission!";
+              message.innerHTML =
+                "Thanks for your submission! The password will be send to you.";
               form.reset();
             } else {
               response.json().then((data) => {
@@ -432,6 +419,39 @@
           });
       }
       form.addEventListener("submit", handleSubmit);
+
+      const chatWidget = document.getElementById("chatWidget");
+      const widgetIcon = document.getElementById("widgetIcon");
+
+      // Monitor page viewport scroll activity
+      window.addEventListener("scroll", () => {
+        // Switch to "Up Arrow" once scrolled past 300px down the page
+        if (window.scrollY > 300) {
+          widgetIcon.className = "fa-solid fa-arrow-up";
+          chatWidget.setAttribute("title", "Scroll to top");
+        } else {
+          // Revert to "Down Arrow" when looking at the top header area
+          widgetIcon.className = "fa-solid fa-arrow-down";
+          chatWidget.setAttribute("title", "Scroll to bottom");
+        }
+      });
+
+      // Handle smooth anchor tracking on click actions
+      chatWidget.addEventListener("click", () => {
+        if (window.scrollY > 300) {
+          // Smoothly scroll back to the absolute top of the screen
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        } else {
+          // Smoothly slide all the way down to the baseline footer heights
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth",
+          });
+        }
+      });
     </script>
   </body>
 </html>

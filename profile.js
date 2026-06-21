@@ -50,7 +50,7 @@ function like() {
     },
     {
       name: "Rasaq",
-      age: 24,
+      age: 23,
       city: "Offa",
       img: "./images/baron.jpg",
       bio: "Playing Football & Singing",
@@ -119,6 +119,14 @@ function like() {
       img: "./images/abdul.jpg",
       bio: "Playing Football & Watching Football",
       phone: +2349026822053,
+    },
+    {
+      name: "Khadijah",
+      age: 24,
+      city: "Offa",
+      img: "./images/khadijah.jpg",
+      bio: "Baking & Content creation",
+      phone: +2349059382023,
     },
   ];
 
@@ -218,13 +226,32 @@ function like() {
     }
   }
 
-  // like button action
+  // helper: build a clean WhatsApp link for a given person + message
+  function buildWhatsAppLink(person, message) {
+    const phoneDigits = String(person.phone).replace(/\D/g, "");
+    return `https://wa.me/${phoneDigits}?text=${encodeURIComponent(message)}`;
+  }
+
+  // like button action -> opens current person's WhatsApp with a "liked you" message
   likeBtn.addEventListener("click", () => {
-    const phone = person.phone.replace(/\D/g, "");
-    const message = encodeURIComponent(
-      `Hi ${person.name}! I liked you on HeartSync`,
+    const person = people[currentIndex];
+    if (!person) return;
+    const link = buildWhatsAppLink(
+      person,
+      `Hi ${person.name}! I liked you on HeartSync 💕`,
     );
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+    window.open(link, "_blank");
+  });
+
+  // message button action -> opens current person's WhatsApp with a friendly intro message
+  messageBtn.addEventListener("click", () => {
+    const person = people[currentIndex];
+    if (!person) return;
+    const link = buildWhatsAppLink(
+      person,
+      `Hi ${person.name}! I'd love to chat with you on HeartSync 😊`,
+    );
+    window.open(link, "_blank");
   });
 
   // next profile (cycle through main people array)
