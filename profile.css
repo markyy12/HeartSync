@@ -286,7 +286,7 @@ ul {
   flex: 1;
   min-width: 0;
   width: 100%;
-  font-size: .65rem;
+  font-size: 0.65rem;
   background: transparent;
   outline: none;
 }
@@ -579,4 +579,89 @@ ul {
   color: #fff;
   margin-top: 10px;
   font-weight: 600;
+}
+
+/* --- LIGHTBOX --- */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s ease;
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 20px;
+  object-fit: contain;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.25s ease;
+}
+
+#lightbox-name {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 22px;
+  border-radius: 40px;
+  white-space: nowrap;
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.8;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+#lightbox-close:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* make images feel clickable */
+.profile-avatar img,
+.person-card img {
+  cursor: zoom-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

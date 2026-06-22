@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,15 +11,20 @@
     />
   </head>
   <body>
-       <div id="lockScreen">
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox">
+      <span id="lightbox-close">&times;</span>
+      <img id="lightbox-img" src="" alt="" />
+      <div id="lightbox-name"></div>
+    </div>
+
+    <div id="lockScreen">
       <h1>🔒 Dating Site</h1>
       <p class="text">Enter password to unlock</p>
       <input type="password" id="passwordInput" placeholder="Password" />
       <button onclick="unlock()">Unlock</button>
       <p id="errorMsg"></p>
     </div>
-
-
 
     <div class="app-container">
       <!-- header -->
@@ -35,13 +40,13 @@
       <!-- main profile card (featured) -->
       <div class="profile-card" id="featuredProfile">
         <div class="profile-avatar">
-          <img src="./images/markyy.jpg" alt="Markyy" id="profileImg" />
+          <img src="./images/user.jpg" alt="User" id="profileImg" />
           <span class="status-dot"></span>
         </div>
         <div class="profile-info">
-          <h2 id="profileName">Markyy, 23</h2>
+          <h2 id="profileName">User, xx</h2>
           <div class="tagline">
-            <span>📍 Offa</span>
+            <span>📍 Nowhere</span>
             <span> Watching Football + Watching Movies</span>
           </div>
           <p id="profileBio">
@@ -84,10 +89,10 @@
           </select>
           <select id="cityFilter">
             <option value="all">All cities</option>
-            <option value="offa">Offa</option>
-            <option value="ilorin">Ilorin</option>
-            <option value="ijagbo">Ijagbo</option>
-            <option value="ipee">Ipee</option>
+            <option value="kwara">Kwara</option>
+            <option value="ibadan">Ibadan</option>
+            <option value="lagos">Lagos</option>
+            <option value="abuja">Abuja</option>
           </select>
         </div>
       </div>

@@ -41,17 +41,9 @@ function like() {
   // ---------- DATABASE (mock) ----------
   const people = [
     {
-      name: "Markky",
-      age: 23,
-      city: "Offa",
-      img: "./images/markyy.jpg",
-      bio: "Tech & Watching Movies",
-      phone: +2348068736505,
-    },
-    {
       name: "Rasaq",
       age: 23,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/baron.jpg",
       bio: "Playing Football & Singing",
       phone: +2348101539244,
@@ -59,7 +51,7 @@ function like() {
     {
       name: "Sekeenah",
       age: 20,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/sekeenah.jpg",
       bio: "Dancing & Singing",
       phone: +2349011341939,
@@ -67,7 +59,7 @@ function like() {
     {
       name: "Mariam",
       age: 22,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/mariam.jpg",
       bio: "Sleeping",
       phone: +2349161075262,
@@ -75,7 +67,7 @@ function like() {
     {
       name: "Sherif",
       age: 24,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/sherif.jpg",
       bio: "Reading & Playing video games",
       phone: +2347043846346,
@@ -83,39 +75,47 @@ function like() {
     {
       name: "Bidemi",
       age: 23,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/bidemi.jpg",
       bio: "Kpop, Sleeping and Gisting",
       phone: +2349039037162,
     },
     {
-      name: "Feranmi",
+      name: "Peter",
+      age: 20,
+      city: "Kwara",
+      img: "./images/peter.jpeg",
+      bio: "Software engineer, Founder, SendlyAI, Clipforge & Faultline",
+      phone: +2348113950481,
+    },
+    {
+      name: "Aishat",
       age: 23,
-      city: "Ijagbo",
-      img: "./images/feranmi.jpg",
-      bio: "Dancing & Singing ",
-      phone: +2347039535695,
+      city: "Kwara",
+      img: "./images/aishat.jpg",
+      bio: "",
+      phone: +2347058793905,
+    },
+    {
+      name: "Abdulazeez",
+      age: 23,
+      city: "Ibadan",
+      img: "./images/alimi.jpeg",
+      bio: "Tech & Learning new things ",
+      phone: +2349151369309,
     },
     {
       name: "Eyitayo",
       age: 24,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/eyitayo.jpg",
-      bio: "Seeking Knowledge 🍷📚",
+      bio: "Seeking Knowledge 📚",
       phone: +2349060757967,
-    },
-    {
-      name: "Aminat",
-      age: 24,
-      city: "Offa",
-      img: "./images/aminat.jpg",
-      bio: "Reading & Sleeping",
-      phone: +234,
     },
     {
       name: "Likma",
       age: 21,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/abdul.jpg",
       bio: "Playing Football & Watching Football",
       phone: +2349026822053,
@@ -123,10 +123,18 @@ function like() {
     {
       name: "Khadijah",
       age: 24,
-      city: "Offa",
+      city: "Kwara",
       img: "./images/khadijah.jpg",
       bio: "Baking & Content creation",
       phone: +2349059382023,
+    },
+    {
+      name: "Damilola",
+      age: 22,
+      city: "Kwara",
+      img: "./images/damilola.jpg",
+      bio: "Exploring opportunities & Learnin new things",
+      phone: +2349134285390,
     },
   ];
 
@@ -276,4 +284,48 @@ function like() {
 
   // also reset if needed
   window.filterPeople = filterPeople; // for console
+
+  // ---------- LIGHTBOX ----------
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxName = document.getElementById("lightbox-name");
+  const lightboxClose = document.getElementById("lightbox-close");
+
+  function openLightbox(src, name) {
+    lightboxImg.src = src;
+    lightboxName.textContent = name || "";
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  // close on X button or clicking outside the image
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+
+  // main profile avatar click
+  document.getElementById("profileImg").addEventListener("click", function () {
+    const name = document.getElementById("profileName").textContent;
+    openLightbox(this.src, name);
+  });
+
+  // grid card images — delegate from peopleGrid (works after re-renders)
+  document.getElementById("peopleGrid").addEventListener("click", (e) => {
+    const img = e.target.closest("img");
+    if (!img) return;
+    const card = img.closest(".person-card");
+    const name = card ? card.querySelector("h4")?.textContent : "";
+    openLightbox(img.src, name);
+  });
 })();

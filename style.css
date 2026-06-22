@@ -392,75 +392,6 @@ header {
   margin-bottom: 0;
 }
 
-.faq-section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.faq-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 50px;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px 40px;
-  text-align: left;
-}
-
-.faq-item {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 15px;
-}
-
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  font-weight: 500;
-  line-height: 1.5;
-  cursor: pointer;
-  user-select: none;
-  color: #1a1a1a;
-  padding: 10px 0;
-  gap: 10px;
-}
-
-.faq-question:hover {
-  color: #ff3366;
-}
-
-.faq-question i {
-  font-size: 0.75rem;
-  color: #999999;
-  transition: transform 0.3s ease;
-  margin-left: 15px;
-  flex-shrink: 0;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition:
-    max-height 0.3s ease,
-    margin-top 0.3s ease;
-  font-size: 0.8rem;
-  color: #666;
-  line-height: 1.6;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg);
-}
-
-.faq-item.active .faq-answer {
-  margin-top: 10px;
-  max-height: 200px;
-}
-
 .cta-section {
   background-color: black;
   padding: 80px 20px;
@@ -767,6 +698,7 @@ footer p {
 
   .header-container {
     position: relative;
+    padding: 20px;
   }
 
   .cta-btn {
