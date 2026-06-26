@@ -105,12 +105,12 @@ function like() {
       phone: +2349151369309,
     },
     {
-      name: "Eyitayo",
-      age: 24,
+      name: "Tobi",
+      age: 23,
       city: "Kwara",
-      img: "./images/eyitayo.jpg",
+      img: "./images/adeniyi.jpeg",
       bio: "Seeking Knowledge 📚",
-      phone: +2349060757967,
+      phone: +2348147621273,
     },
     {
       name: "Likma",
@@ -135,6 +135,14 @@ function like() {
       img: "./images/damilola.jpg",
       bio: "Exploring opportunities & Learnin new things",
       phone: +2349134285390,
+    },
+    {
+      name: "Abdulwareez",
+      age: 22,
+      city: "Kwara",
+      img: "./images/user.jpg",
+      bio: "",
+      phone: +2348146770439,
     },
   ];
 
@@ -241,7 +249,7 @@ function like() {
   }
 
   // like button action -> opens current person's WhatsApp with a "liked you" message
-  likeBtn.addEventListener("click", () => {
+   likeBtn.addEventListener("click", () => {
     const person = people[currentIndex];
     if (!person) return;
     const link = buildWhatsAppLink(
@@ -262,6 +270,21 @@ function like() {
     window.open(link, "_blank");
   });
 
+  likeBtn.parentNode.removeAttribute("href"); // Disarm previous WhatsApp redirect wrapping anchor paths
+  messageBtn.parentNode.removeAttribute("href"); // Disarm previous WhatsApp redirect wrapping anchor paths
+
+  // Updated Like button interaction model
+  likeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Assuming 'Markky' acts as your current session owner user profile identifier context
+    window.location.href = `chat.html?user=Rasaq&match=${encodeURIComponent(p.name)}`;
+  });
+
+  // Updated Message button interaction model
+  messageBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = `chat.html?user=Rasaq&match=${encodeURIComponent(p.name)}`;
+  });
   // next profile (cycle through main people array)
   nextBtn.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % people.length;
