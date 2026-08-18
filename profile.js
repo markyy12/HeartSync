@@ -1,16 +1,16 @@
-const PASSWORD = "love";
+// const PASSWORD = "love";
 
-function unlock() {
-  const input = document.getElementById("passwordInput").value;
-  if (input === PASSWORD) {
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
-    showProfile();
-  } else {
-    document.getElementById("errorMsg").textContent =
-      "😫 Wrong password. Try again.";
-  }
-}
+// function unlock() {
+//   const input = document.getElementById("passwordInput").value;
+//   if (input === PASSWORD) {
+//     document.getElementById("lockScreen").style.display = "none";
+//     document.getElementById("mainContent").style.display = "block";
+//     showProfile();
+//   } else {
+//     document.getElementById("errorMsg").textContent =
+//       "😫 Wrong password. Try again.";
+//   }
+// }
 
 function showProfile() {
   const p = profiles[currentProfile];
@@ -40,6 +40,14 @@ function like() {
 (function () {
   // ---------- DATABASE (mock) ----------
   const people = [
+    {
+      name: "Markyy",
+      age: 23,
+      city: "Kwara",
+      img: "./images/markii.jpg",
+      bio: "Playing Football & Watching Movies",
+      phone: +2348068736505,
+    },
     {
       name: "Rasaq",
       age: 23,
@@ -265,7 +273,7 @@ function like() {
     if (!person) return;
     const link = buildWhatsAppLink(
       person,
-      `Hi ${person.name}! I'd love to chat with you on HeartSync 😊`,
+      `Hi ${person.name}! Hi, Friend! I'm from HeartSync! I'd love to be friends with you 😊`,
     );
     window.open(link, "_blank");
   });
